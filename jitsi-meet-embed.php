@@ -44,12 +44,7 @@ function jitsi_meet_embed_shortcode($atts) {
   $width = esc_attr($atts['width']);
   $height = esc_attr($atts['height']);
 
-  $iframe_code = sprintf(
-    '<iframe src="https://meet.jit.si/%s" width="%s" height="%s" frameborder="0" allowfullscreen></iframe>',
-    $room,
-    $width,
-    $height
-  );
+  $iframe_code = "<iframe src=\"https://meet.jit.si/{$room}\" width=\"{$width}\" height=\"{$height}\" allow=\"camera; microphone; fullscreen; display-capture; autoplay\" style=\"height: 480px; width: 100%; aspect-ratio: 16/10; border: 0px;\" frameborder=\"0\"></iframe>";
 
   return $iframe_code;
 }
