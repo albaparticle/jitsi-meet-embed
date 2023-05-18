@@ -3,7 +3,7 @@
 Plugin Name: Jitsi Meet Embed
 Description: Automatically creates and embeds Jitsi meetings.
 Version: 1.0.0
-Author: Your Name
+Author: John Alba
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Text Domain: jitsi-meet-embed
@@ -21,6 +21,7 @@ add_action('init', 'jitsi_meet_embed_init');
 // Register any necessary CSS stylesheets
 function jitsi_meet_embed_enqueue_styles() {
   wp_enqueue_style('jitsi-meet-embed-styles', plugin_dir_url(__FILE__) . 'css/styles.css');
+  wp_enqueue_script('jitsi-meet-embed-editor-plugin', plugin_dir_url(__FILE__) . 'js/editor-plugin.js', array('jquery'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'jitsi_meet_embed_enqueue_styles');
 
@@ -79,9 +80,4 @@ function jitsi_meet_embed_add_editor_plugin($plugins) {
 function jitsi_meet_embed_register_editor_button($buttons) {
   array_push($buttons, 'jitsi_meet_embed_button');
   return $buttons;
-}
-
-function jitsi_meet_embed_enqueue_styles() {
-  wp_enqueue_style('jitsi-meet-embed-styles', plugin_dir_url(__FILE__) . 'css/styles.css');
-  wp_enqueue_script('jitsi-meet-embed-editor-plugin', plugin_dir_url(__FILE__) . 'js/editor-plugin.js', array('jquery'), '1.0.0', true);
 }
